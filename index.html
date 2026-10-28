@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Design &amp; Development | Lectures</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-root="./" data-page="home">
+
+  <header id="site-header" class="site-header"></header>
+
+  <main class="container">
+    <!-- Module details (filled in by js/pages/home.js from js/config.js) -->
+    <section class="hero" id="hero"></section>
+
+    <section class="how-it-works grid grid-3" aria-label="How this site works">
+      <div class="how-step">
+        <span class="num">1</span>
+        <p><strong>Sign in</strong>Use your registration number. No password needed.</p>
+      </div>
+      <div class="how-step">
+        <span class="num">2</span>
+        <p><strong>Learn and practise</strong>Read each lecture and try the live coding activities.</p>
+      </div>
+      <div class="how-step">
+        <span class="num">3</span>
+        <p><strong>Earn points</strong>Watch your progress wheel fill and climb the leaderboard.</p>
+      </div>
+    </section>
+
+    <h2 class="section-title">Learning outcomes and lectures</h2>
+    <div id="lo-list"></div>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script type="module" src="js/pages/home.js"></script>
+</body>
+</html>

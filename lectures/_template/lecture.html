@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Session NN | Web Design &amp; Development</title>
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<!--
+  HOW TO USE THIS TEMPLATE
+  1. Copy lecture.html and lecture.js into the right LO folder, for example
+       lectures/lo2/session-02.html   and   lectures/lo2/session-02.js
+     (keep them exactly two folders deep so the ../../ paths still work)
+  2. In the copied HTML, change the script line at the bottom to session-02.js
+  3. Replace the sample sections below with your content
+  4. Add the lecture (and its items) to js/config.js
+-->
+<body data-root="../../" data-page="lecture">
+
+  <header id="site-header" class="site-header"></header>
+
+  <div class="container lecture-layout">
+    <aside class="lecture-sidebar" id="lecture-sidebar" aria-label="Lecture contents"></aside>
+
+    <main class="lecture-main">
+      <div id="signin-banner"></div>
+
+      <!-- A section WITHOUT data-item is not tracked (use it for overview and summary). -->
+      <section class="card lecture-hero" id="overview" data-toc="Overview">
+        <p class="eyebrow">LOx &middot; Session NN</p>
+        <h1>Lecture title</h1>
+        <p class="muted">Write a short introduction here.</p>
+      </section>
+
+      <!-- A READING section: counts as read after 3 seconds on screen. data-item must match js/config.js -->
+      <section class="card" id="topic-one" data-toc="1. First topic" data-item="r_topic_one" data-type="read">
+        <div class="section-label"><span class="type-tag type-read">Read</span><span class="points-tag">+2 points</span></div>
+        <h2>First topic</h2>
+        <p>Your lecture content goes here.</p>
+      </section>
+
+      <!-- A LIVE CODING activity: describe it in lecture.js under the same id -->
+      <section class="card" id="act-one" data-toc="Activity 1" data-item="a_one" data-type="activity">
+        <div class="section-label"><span class="type-tag type-activity">Activity 1</span><span class="points-tag">+10 points</span></div>
+        <h2>Activity title</h2>
+        <div class="code-lab" data-activity="a_one"></div>
+      </section>
+
+      <!-- A TICK-BOX task (for work done outside the page) -->
+      <section class="card" id="task-one" data-toc="Task" data-item="a_task" data-type="activity">
+        <div class="section-label"><span class="type-tag type-activity">Task</span><span class="points-tag">+10 points</span></div>
+        <h2>Task title</h2>
+        <div class="task-checklist" data-activity="a_task">
+          <label><input type="checkbox"> First thing to tick</label>
+          <label><input type="checkbox"> Second thing to tick</label>
+          <div class="lab-actions">
+            <button type="button" class="btn btn-success task-done">Mark task as done</button>
+            <span class="lab-status" role="status" aria-live="polite"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- THE QUIZ (questions are written in lecture.js) -->
+      <section class="card" id="quiz-section" data-toc="Quiz" data-item="quiz" data-type="quiz">
+        <div class="section-label"><span class="type-tag type-quiz">Quiz</span><span class="points-tag">5 points per question</span></div>
+        <h2>Check your understanding</h2>
+        <div id="quiz"></div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="lecture.js"></script>
+</body>
+</html>

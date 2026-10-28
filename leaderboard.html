@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaderboard | Web Design &amp; Development</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-root="./" data-page="leaderboard">
+
+  <header id="site-header" class="site-header"></header>
+
+  <main class="container" style="padding-top: 32px;">
+    <section class="card">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap;">
+        <div>
+          <h1>Leaderboard</h1>
+          <p class="muted">Points come from reading lectures (2 each), activities (10 each) and quiz answers (5 each).</p>
+        </div>
+        <button type="button" class="btn btn-ghost" id="refresh-btn">Refresh</button>
+      </div>
+      <div class="table-wrap" id="leaderboard"></div>
+    </section>
+  </main>
+
+  <script type="module" src="js/pages/leaderboard.js"></script>
+</body>
+</html>

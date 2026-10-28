@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Session 01 | Web Design &amp; Development</title>
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<!-- data-root tells the shared code how to get back to the site's main folder -->
+<body data-root="../../" data-page="lecture">
+
+  <header id="site-header" class="site-header"></header>
+
+  <div class="container lecture-layout">
+
+    <!-- Filled in by js/lecture.js: progress wheel + contents list -->
+    <aside class="lecture-sidebar" id="lecture-sidebar" aria-label="Lecture contents"></aside>
+
+    <main class="lecture-main">
+      <div id="signin-banner"></div>
+
+      <!-- ============================================================
+           OVERVIEW (not tracked for progress)
+           ============================================================ -->
+      <section class="card lecture-hero" id="overview" data-toc="Overview">
+        <p class="eyebrow">LO3 &middot; Session 01</p>
+        <h1>Introduction to Web Design &amp; Development</h1>
+        <p class="muted">Web Design &amp; Development (Y/618/7419) &middot; Hashini Jayasinghe</p>
+
+        <h3>Learning outcomes of the module</h3>
+        <ul class="lo-list">
+          <li>LO1 Explain server technologies and management services associated with hosting and managing websites</li>
+          <li>LO2 Categorise website technologies, tools and software used to develop websites</li>
+          <li class="focus">LO3 Utilise website technologies, tools and techniques with good design principles to create a multipage website &larr; this session</li>
+          <li>LO4 Create and use a Test Plan to review the performance and design of a multipage website</li>
+        </ul>
+
+        <h3>Today's topics</h3>
+        <ul class="lo-list">
+          <li>Understand what web design and web development are (and what a wireframe is)</li>
+          <li>Understand the role of HTML, CSS and JavaScript</li>
+          <li>Identify basic HTML tags</li>
+          <li>Understand how these technologies work together</li>
+        </ul>
+
+        <div class="callout callout-tip">
+          <strong>How you earn points</strong>
+          <p>Reading a section (2 points), finishing an activity (10 points) and answering quiz questions (5 points each).
+            Sign in so your progress wheel and the leaderboard stay up to date.</p>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           1. WEB DESIGN
+           ============================================================ -->
+      <section class="card" id="design" data-toc="1. What is web design?" data-item="r_design" data-type="read">
+        <div class="section-label"><span class="type-tag type-read">Read</span><span class="points-tag">+2 points</span></div>
+        <h2>What is web design?</h2>
+        <p><strong>Web design is the visual appearance and the layout of a website.</strong>
+          It decides what visitors see and how easy the site is to use.</p>
+
+        <div class="grid grid-3">
+          <div class="idea"><span class="big" aria-hidden="true">&#9638;</span><h3>Layout</h3>
+            <p>Where the menu, headings, text and images sit on each page.</p></div>
+          <div class="idea"><span class="big" aria-hidden="true">&#127912;</span><h3>Colour and type</h3>
+            <p>The colours and fonts that give the site its look and make it easy to read.</p></div>
+          <div class="idea"><span class="big" aria-hidden="true">&#128247;</span><h3>Images and brand</h3>
+            <p>Photos, icons and a logo that match the organisation's brand.</p></div>
+        </div>
+
+        <h3 style="margin-top:24px">Design and development: what is the difference?</h3>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th></th><th>Web design</th><th>Web development</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Question it answers</strong></td><td>How should it look and feel?</td><td>How does it work?</td></tr>
+              <tr><td><strong>Example work</strong></td><td>Wireframes, colour choices, page layouts</td><td>Writing the HTML, CSS and JavaScript</td></tr>
+              <tr><td><strong>Example tools</strong></td><td>Figma, draw.io, Canva</td><td>VS Code, a web browser</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          <strong>Good design is for everyone</strong>
+          <p>A well designed site follows accessibility and inclusivity guidelines (for example the W3C guidelines and the
+            Equality Act 2010), so people with different needs can use it. You will plan for this in your assignment.</p>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           2. WIREFRAMES
+           ============================================================ -->
+      <section class="card" id="wireframes" data-toc="2. Wireframes" data-item="r_wireframe" data-type="read">
+        <div class="section-label"><span class="type-tag type-read">Read</span><span class="points-tag">+2 points</span></div>
+        <h2>Wireframes: the blueprint of user experience</h2>
+        <p>Before we start building, we plan. <strong>A wireframe is a low-fidelity visual representation of a website's
+          layout.</strong> It is like the architect's blueprint of a building: it focuses on structure, content and
+          functionality rather than visual design.</p>
+
+        <div class="grid grid-3">
+          <div class="idea"><h3>Structure</h3><p>How the elements are organised on the page.</p></div>
+          <div class="idea"><h3>Content</h3><p>What information will be displayed.</p></div>
+          <div class="idea"><h3>Functionality</h3><p>How users will interact with the interface.</p></div>
+        </div>
+
+        <!-- A simple wireframe drawn with HTML and CSS -->
+        <div class="wire" role="img" aria-label="Example wireframe: a navigation bar, a large hero area, three content boxes and a footer">
+          <div class="wire-nav">LOGO &nbsp;|&nbsp; Home &nbsp; About &nbsp; Services &nbsp; Contact</div>
+          <div class="wire-hero">HERO: headline + button + image</div>
+          <div class="wire-cards"><div>Card 1</div><div>Card 2</div><div>Card 3</div></div>
+          <div class="wire-footer">FOOTER: links, contact details</div>
+        </div>
+        <p class="wire-caption">A low-fidelity wireframe: boxes and labels only, no colours or real images.</p>
+
+        <h3>Why are wireframes so useful?</h3>
+        <div class="grid grid-3">
+          <div class="idea"><h3>Clear communication</h3>
+            <p>A common language for clients, designers and developers, so everyone agrees before detailed design starts.</p></div>
+          <div class="idea"><h3>Early feedback</h3>
+            <p>Quick and cheap to change, so usability problems are found early.</p></div>
+          <div class="idea"><h3>Faster development</h3>
+            <p>Structure and functionality are decided up front, so there are fewer costly changes later.</p></div>
+        </div>
+
+        <h3 style="margin-top:24px">The art of wireframe design</h3>
+        <ol class="steps-list">
+          <li><div><strong>Understand user needs</strong>Look at user research, personas and user flows to find the main goals of your audience.</div></li>
+          <li><div><strong>Sketch and ideate</strong>Start with rough sketches on paper. Do not worry about perfection yet.</div></li>
+          <li><div><strong>Define content and hierarchy</strong>Decide what content each screen needs and what matters most. Use placeholder text and images.</div></li>
+          <li><div><strong>Layout and interactivity</strong>Arrange the elements, think about navigation, and map out buttons, forms and other interactions.</div></li>
+        </ol>
+
+        <h3>Levels of fidelity</h3>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>Level</th><th>Looks like</th><th>Used for</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Low</strong></td><td>Paper sketches or simple grey boxes</td><td>Exploring ideas quickly</td></tr>
+              <tr><td><strong>Medium</strong></td><td>Neat digital layout with real headings and labels, still no final colours</td><td>Agreeing the design with the client. <em>Your assignment needs medium-fidelity wireframes.</em></td></tr>
+              <tr><td><strong>High</strong></td><td>Close to the finished look, with colours and images</td><td>Final approval and testing</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 style="margin-top:24px">Popular tools for wireframing</h3>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>Tool</th><th>Good for</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Figma</strong></td><td>Browser-based design with real-time teamwork and many plugins</td></tr>
+              <tr><td><strong>Canva</strong></td><td>Beginners: templates and drag-and-drop</td></tr>
+              <tr><td><strong>draw.io (diagrams.net)</strong></td><td>Free and open source; shape libraries including basic UI elements; good for structure and user flows</td></tr>
+              <tr><td><strong>Microsoft Visio</strong></td><td>Detailed diagrams and system architecture; works with other Microsoft Office products</td></tr>
+              <tr><td><strong>Penpot</strong></td><td>Free, open-source design and prototyping tool that runs in the browser</td></tr>
+              <tr><td><strong>Adobe XD</strong></td><td>Part of Adobe Creative Cloud. Adobe has stopped adding new features to it, so check before choosing it for a new project.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           WIREFRAME TASK
+           ============================================================ -->
+      <section class="card" id="wireframe-task" data-toc="Task: plan a wireframe" data-item="a_wireframe" data-type="activity">
+        <div class="section-label"><span class="type-tag type-activity">Task</span><span class="points-tag">+10 points</span></div>
+        <h2>Task: wireframe a home page</h2>
+        <p>Choose any company name (for example "ABC Group") and sketch the <strong>home page</strong> of its website.
+          Use paper, Figma, draw.io or any tool from the list above. This is a first step towards the design
+          document in your assignment.</p>
+
+        <div class="task-checklist" data-activity="a_wireframe">
+          <label><input type="checkbox"> I chose a company and a tool (paper, Figma, draw.io...)</label>
+          <label><input type="checkbox"> My wireframe shows a header with a logo and a navigation menu</label>
+          <label><input type="checkbox"> It has a main area with at least two content sections</label>
+          <label><input type="checkbox"> It has a footer</label>
+          <label><input type="checkbox"> I labelled where the text, images and buttons will go</label>
+          <div class="lab-actions">
+            <button type="button" class="btn btn-success task-done">Mark task as done</button>
+            <span class="lab-status" role="status" aria-live="polite"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           3. WEB DEVELOPMENT
+           ============================================================ -->
+      <section class="card" id="development" data-toc="3. Web development" data-item="r_dev" data-type="read">
+        <div class="section-label"><span class="type-tag type-read">Read</span><span class="points-tag">+2 points</span></div>
+        <h2>What is web development?</h2>
+        <p><strong>Web development is the process of building and maintaining a website's functionality.</strong>
+          Developers turn the design into a real site that works in the browser.</p>
+
+        <h3>The role of HTML, CSS and JavaScript</h3>
+        <p>Think of a house. HTML is the walls and rooms, CSS is the paint and furniture, and JavaScript is the
+          electricity that makes things happen.</p>
+        <div class="grid grid-3">
+          <div class="idea"><span class="big" aria-hidden="true">&#127959;</span><h3>HTML</h3>
+            <p>The <strong>structure</strong> of the web page.</p>
+            <p class="example">Example: text and images</p></div>
+          <div class="idea"><span class="big" aria-hidden="true">&#127912;</span><h3>CSS</h3>
+            <p>The <strong>styling and layout</strong>.</p>
+            <p class="example">Example: colours and layouts</p></div>
+          <div class="idea"><span class="big" aria-hidden="true">&#9889;</span><h3>JavaScript</h3>
+            <p>The <strong>behaviour and interactivity</strong>.</p>
+            <p class="example">Example: button clicks and actions</p></div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           4. HTML BASICS
+           ============================================================ -->
+      <section class="card" id="html-basics" data-toc="4. HTML basics" data-item="r_html" data-type="read">
+        <div class="section-label"><span class="type-tag type-read">Read</span><span class="points-tag">+2 points</span></div>
+        <h2>HTML basics</h2>
+        <p><strong>HTML</strong> stands for <strong>HyperText Markup Language</strong>. It is the standard markup language
+          for creating web pages. It describes the structure of a page using a series of <strong>elements</strong>.
+          Elements tell the browser how to display the content and label each piece of it, such as "this is a heading",
+          "this is a paragraph" or "this is a link".</p>
+
+        <h3>What is an HTML element?</h3>
+        <p>An element is defined by a <strong>start tag</strong>, some <strong>content</strong> and an
+          <strong>end tag</strong>. The element is everything from the start tag to the end tag.</p>
+
+        <h3>What is an HTML attribute?</h3>
+        <p>Attributes give extra information about an element. They are always written in the start tag and usually come
+          as a name and value pair: <code>name="value"</code>.</p>
+
+        <div class="anatomy" role="img" aria-label="Anatomy of the link element a href equals https colon slash slash example dot com, with the text Visit my site">
+          <div class="anatomy-code"><span class="a-tag">&lt;a</span> <span class="a-attr">href</span>=<span class="a-val">"https://example.com"</span><span class="a-tag">&gt;</span><span class="a-content">Visit my site</span><span class="a-tag">&lt;/a&gt;</span></div>
+          <div class="legend">
+            <span class="l-tag">Start and end tags</span>
+            <span class="l-attr">Attribute name</span>
+            <span class="l-val">Attribute value</span>
+            <span class="l-content">Content</span>
+          </div>
+        </div>
+
+        <h3>Basic HTML structure</h3>
+<pre class="code"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Web Design &amp; Development&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;My First Web Page&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>Part</th><th>What it does</th></tr></thead>
+            <tbody>
+              <tr><td><code>&lt;!DOCTYPE html&gt;</code></td><td>Declares that this document is an HTML5 document</td></tr>
+              <tr><td><code>&lt;html&gt;</code></td><td>The root element of an HTML page</td></tr>
+              <tr><td><code>&lt;head&gt;</code></td><td>Contains information about the page (meta information)</td></tr>
+              <tr><td><code>&lt;title&gt;</code></td><td>The page title, shown in the browser tab or title bar</td></tr>
+              <tr><td><code>&lt;body&gt;</code></td><td>The container for everything visible on the page</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-tip">
+          <strong>Good practice for real projects</strong>
+          <p>Professional pages usually add three more things. They are not needed for the practice below, but use them in your assignment:</p>
+<pre class="code"><code>&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Web Design &amp; Development&lt;/title&gt;
+&lt;/head&gt;</code></pre>
+          <p><code>lang</code> helps screen readers pronounce the page correctly, <code>charset</code> shows all characters correctly,
+            and <code>viewport</code> makes the page work on phones.</p>
+        </div>
+
+        <h3>Create your first web page</h3>
+        <ol class="steps-list">
+          <li><div><strong>Open Visual Studio Code</strong>A professional HTML editor.</div></li>
+          <li><div><strong>Write some HTML</strong>Type the basic structure above.</div></li>
+          <li><div><strong>Save the file</strong>Name it <code>myWebPage.html</code>.</div></li>
+          <li><div><strong>View it in your browser</strong>Double-click the file, or right-click it in VS Code and choose "Open with Live Server" if you have that extension.</div></li>
+        </ol>
+      </section>
+
+      <!-- ============================================================
+           PRACTICE INTRO (not tracked)
+           ============================================================ -->
+      <section class="card" id="practice" data-toc="Practice time">
+        <h2>Practice time: seven activities</h2>
+        <p>Each activity below teaches one HTML tag and has a <strong>live editor</strong>. Type your code on the left, see the
+          result on the right, then press <strong>Check my work</strong>.</p>
+        <div class="callout callout-note">
+          <strong>Do it in VS Code too</strong>
+          <p>The editors here are for quick practice. Also type each activity into your <code>myWebPage.html</code> file in
+            VS Code and open it in the browser. That is how you will work on your assignment.</p>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           ACTIVITY 1: HEADINGS
+           ============================================================ -->
+      <section class="card" id="act-headings" data-toc="Activity 1: Headings" data-item="a_headings" data-type="activity">
+        <div class="section-label"><span class="type-tag type-activity">Activity 1</span><span class="points-tag">+10 points</span></div>
+        <h2>HTML headings</h2>
+        <p>Headings are defined with the <code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code> tags.
+          <code>&lt;h1&gt;</code> is the most important heading and <code>&lt;h6&gt;</code> the least important.</p>
+<pre class="code"><code>&lt;h1&gt;Heading 1&lt;/h1&gt;
+&lt;h2&gt;Heading 2&lt;/h2&gt;
+&lt;h3&gt;Heading 3&lt;/h3&gt;</code></pre>
+        <p class="muted">Tip: use one <code>&lt;h1&gt;</code> per page, and choose a heading by its importance, not by how big it looks.
+          (You can change the size later with CSS.)</p>
+        <div class="code-lab" data-activity="a_headings"></div>
+      </section>
+
+      <!-- ============================================================
+           ACTIVITY 2: PARAGRAPHS
+           ============================================================ -->
+      <section class="card" id="act-paragraphs" data-toc="Activity 2: Paragraphs" data-item="a_paragraphs" data-type="activity">
+        <div class="section-label"><span class="type-tag type-activity">Activity 2</span><span class="points-tag">+10 points</span></div>
+        <h2>HTML paragraphs</h2>
+        <p>The <code>&lt;p&gt;</code> element defines a paragraph. A paragraph always starts on a new line, and the browser
+          automatically adds some white space (a margin) before and after it.</p>
+<pre class="code"><code>&lt;p&gt;This is a paragraph.&lt;/p&gt;</code></pre>
+        <div class="code-lab" data-activity="a_paragraphs"></div>
+      </section>
+
+      <!-- ============================================================
+           ACTIVITY 3: LINKS
+           ============================================================ -->
+      <section class="card" id="act-links" data-toc="Activity 3: Links" data-item="a_links" data-type="activity">
+        <div class="section-label"><span class="type-tag type-activity">Activity 3</span><span class="points-tag">+10 points</span></div>
+        <h2>HTML links</h2>
+        <p>Links are hyperlinks. A user can click a link to jump to another page or site. When you move the mouse over a link,
+          the arrow turns into a little hand.</p>
+<pre class="code"><code>&lt;a href="https://www.wikipedia.org"&gt;Visit Wikipedia&lt;/a&gt;</code></pre>
+        <p class="muted">Tip: write link text that makes sense on its own ("Visit Wikipedia", not "click here"). It helps everyone,
+          especially people using screen readers.</p>
+        <div class="code-lab" data-activity="a_links"></div>
+      </section>
+
+      <!-- ============================================================
+           ACTIVITY 4: IMAGES
+           ============================================================ -->
+      <section class="card" id="act-images" data-toc="Activity 4: Images" data-item="a_images" data-type="activity">
+        <div class="section-label"><span class="type-tag type-activity">Activity 4</span><span class="points-tag">+10 points</span></div>
+        <h2>HTML images</h2>
+        <p>The <code>&lt;img&gt;</code> tag embeds an image in a page. Images are not really inserted into the page; they are
+          <em>linked</em>, and the tag creates a holding space for the picture it points to.</p>
+        <p>The <code>&lt;img&gt;</code> tag is <strong>empty</strong>: it has attributes only and no closing tag. It has two required attributes:</p>
+        <ul>
+          <li><code>src</code> specifies the path to the image</li>
+          <li><code>alt</code> specifies alternative text, used by screen readers and shown if the image cannot load</li>
+        </ul>
+<pre class="code"><code>&lt;img src="photo.jpg" alt="A student at a laptop" width="300"&gt;</code></pre>
+        <div class="callout callout-note">
+          <strong>Try it in VS Code</strong>
+          <p>Create a folder called <code>image-practice</code>, put any image inside it (for example <code>student.jpg</code>),
+            move <code>myWebPage.html</code> into the same folder, and use that file name as the <code>src</code>.</p>
+        </div>
+        <div class="code-lab" data-activity="a_images"></div>
+      </section>
+
+      <!-- ============================================================
+           ACTIVITY 5: LISTS
+           ============================================================ -->
+      <section class="card" id="act-lists" data-toc="Activity 5: Lists" data-item="a_lists" data-type="activity">
+        <div class="section-label"><span class="type-tag type-activity">Activity 5</span><span class="points-tag">+10 points</span></div>
+        <h2>HTML lists</h2>
+        <p>Lists group a set of related items. There are two types:</p>
+        <div class="grid grid-2">
+          <div>
+            <h3>Unordered list</h3>
+            <p>Starts with <code>&lt;ul&gt;</code>. Each item starts with <code>&lt;li&gt;</code>. Items get bullets by default.</p>
+<pre class="code"><code>&lt;ul&gt;
+  &lt;li&gt;Coffee&lt;/li&gt;
+  &lt;li&gt;Tea&lt;/li&gt;
+  &lt;li&gt;Milk&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+          </div>
+          <div>
+            <h3>Ordered list</h3>
+            <p>Starts with <code>&lt;ol&gt;</code>. Each item starts with <code>&lt;li&gt;</code>. Items get numbers by default.</p>
+<pre class="code"><code>&lt;ol&gt;
+  &lt;li&gt;Coffee&lt;/li&gt;
+  &lt;li&gt;Tea&lt;/li&gt;
+  &lt;li&gt;Milk&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+          </div>
+        </div>
+        <div class="code-lab" data-activity="a_lists"></div>
+      </section>
+
+      <!-- ============================================================
+           ACTIVITY 6: TABLES
+           ============================================================ -->
+      <section class="card" id="act-tables" data-toc="Activity 6: Tables" data-item="a_tables" data-type="activity">
+        <div class="section-label"><span class="type-tag type-activity">Activity 6</span><span class="points-tag">+10 points</span></div>
+        <h2>HTML tables</h2>
+        <p>A table is made of cells inside rows and columns. Each row starts with <code>&lt;tr&gt;</code> and ends with
+          <code>&lt;/tr&gt;</code>. Each normal cell is a <code>&lt;td&gt;</code>, and a header cell is a <code>&lt;th&gt;</code>.</p>
+<pre class="code"><code>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Name&lt;/th&gt;
+    &lt;th&gt;Age&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Emil&lt;/td&gt;
+    &lt;td&gt;27&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+
+        <details>
+          <summary><strong>All the table tags</strong></summary>
+          <div class="table-wrap">
+            <table class="table">
+              <thead><tr><th>Tag</th><th>Purpose</th></tr></thead>
+              <tbody>
+                <tr><td><code>&lt;table&gt;</code></td><td>Defines a table</td></tr>
+                <tr><td><code>&lt;th&gt;</code></td><td>Defines a header cell</td></tr>
+                <tr><td><code>&lt;tr&gt;</code></td><td>Defines a row</td></tr>
+                <tr><td><code>&lt;td&gt;</code></td><td>Defines a cell</td></tr>
+                <tr><td><code>&lt;caption&gt;</code></td><td>Defines a table caption</td></tr>
+                <tr><td><code>&lt;colgroup&gt;</code></td><td>Groups one or more columns for formatting</td></tr>
+                <tr><td><code>&lt;col&gt;</code></td><td>Sets properties for each column inside a colgroup</td></tr>
+                <tr><td><code>&lt;thead&gt;</code></td><td>Groups the header content</td></tr>
+                <tr><td><code>&lt;tbody&gt;</code></td><td>Groups the body content</td></tr>
+                <tr><td><code>&lt;tfoot&gt;</code></td><td>Groups the footer content</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+        <p class="muted" style="margin-top:12px">Tip: use tables for data (like a timetable), not for page layout.</p>
+        <div class="code-lab" data-activity="a_tables"></div>
+      </section>
+
+      <!-- ============================================================
+           ACTIVITY 7: DIV
+           ============================================================ -->
+      <section class="card" id="act-div" data-toc="Activity 7: Div" data-item="a_div" data-type="activity">
+        <div class="section-label"><span class="type-tag type-activity">Activity 7</span><span class="points-tag">+10 points</span></div>
+        <h2>The HTML div element</h2>
+        <p>The <code>&lt;div&gt;</code> element is a <strong>container</strong> for other HTML elements. By default it is a
+          <em>block</em> element: it takes all the available width and starts on a new line. It becomes much more useful once
+          you learn CSS, because you can style and arrange whole groups of elements at once.</p>
+<pre class="code"><code>&lt;div&gt;
+  &lt;h2&gt;A box&lt;/h2&gt;
+  &lt;p&gt;Everything between the div tags belongs to this box.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+        <div class="code-lab" data-activity="a_div"></div>
+      </section>
+
+      <!-- ============================================================
+           5. HOW THEY WORK TOGETHER
+           ============================================================ -->
+      <section class="card" id="together" data-toc="5. Working together" data-item="r_together" data-type="read">
+        <div class="section-label"><span class="type-tag type-read">Read</span><span class="points-tag">+2 points</span></div>
+        <h2>How HTML, CSS and JavaScript work together</h2>
+        <p>Every web page you visit is built from all three. Click the steps below to see the same small card with each
+          technology added.</p>
+
+        <div class="together" id="together-demo">
+          <div class="together-steps">
+            <button type="button" class="btn btn-ghost" data-step="1">1. HTML only</button>
+            <button type="button" class="btn btn-ghost" data-step="2">2. + CSS</button>
+            <button type="button" class="btn btn-ghost" data-step="3">3. + JavaScript</button>
+          </div>
+          <div class="together-stage">
+            <div class="demo-card" id="demo-card">
+              <h3>Alex Student</h3>
+              <p>Web design student</p>
+              <button type="button" id="follow-btn" aria-pressed="false">Follow</button>
+              <p id="follow-count">0 followers</p>
+            </div>
+          </div>
+          <p id="together-caption" class="muted" aria-live="polite"></p>
+        </div>
+
+        <div class="callout">
+          <strong>Remember</strong>
+          <p>HTML is the content and structure, CSS is the look, and JavaScript is the behaviour. Change one without breaking the others.</p>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           QUIZ
+           ============================================================ -->
+      <section class="card" id="quiz-section" data-toc="Quiz" data-item="quiz" data-type="quiz">
+        <div class="section-label"><span class="type-tag type-quiz">Quiz</span><span class="points-tag">up to 45 points</span></div>
+        <h2>Check your understanding</h2>
+        <div id="quiz"></div>
+      </section>
+
+      <!-- ============================================================
+           SUMMARY (not tracked)
+           ============================================================ -->
+      <section class="card" id="summary" data-toc="Summary">
+        <h2>Summary</h2>
+        <ul>
+          <li>Web design is how a site looks and is laid out. Web development is how it is built and works.</li>
+          <li>A wireframe is a low-fidelity blueprint of structure, content and functionality.</li>
+          <li>HTML gives structure, CSS gives style and layout, JavaScript gives behaviour.</li>
+          <li>An HTML element has a start tag, content and an end tag, and attributes add extra information.</li>
+          <li>You met headings, paragraphs, links, images, lists, tables and the div container.</li>
+        </ul>
+        <div class="callout callout-tip">
+          <strong>Before the next session</strong>
+          <p>Finish any activities you have not completed, practise them in VS Code, and start thinking about which company you
+            will build your assignment website for.</p>
+        </div>
+        <p><a class="btn btn-primary" href="../../leaderboard.html">See the leaderboard</a>
+          <a class="btn btn-ghost" href="../../index.html">Back to all lectures</a></p>
+      </section>
+
+    </main>
+  </div>
+
+  <script type="module" src="session-01.js"></script>
+</body>
+</html>
