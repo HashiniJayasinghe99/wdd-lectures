@@ -32,23 +32,23 @@
         <p class="muted">Write a short introduction here.</p>
       </section>
 
-      <!-- A READING section: counts as read after 3 seconds on screen. data-item must match js/config.js -->
+      <!-- A READING section: counts as read after 5 seconds on screen. data-item must match js/config.js -->
       <section class="card" id="topic-one" data-toc="1. First topic" data-item="r_topic_one" data-type="read">
-        <div class="section-label"><span class="type-tag type-read">Read</span><span class="points-tag">+2 points</span></div>
+        <div class="section-label"><span class="type-tag type-read">Theory</span><span class="type-hint">Read and learn</span><span class="points-tag">+2 points</span></div>
         <h2>First topic</h2>
         <p>Your lecture content goes here.</p>
       </section>
 
       <!-- A LIVE CODING activity: describe it in lecture.js under the same id -->
       <section class="card" id="act-one" data-toc="Activity 1" data-item="a_one" data-type="activity">
-        <div class="section-label"><span class="type-tag type-activity">Activity 1</span><span class="points-tag">+10 points</span></div>
+        <div class="section-label"><span class="type-tag type-activity">Activity 1</span><span class="type-hint">Do it yourself</span><span class="points-tag">+10 points</span></div>
         <h2>Activity title</h2>
         <div class="code-lab" data-activity="a_one"></div>
       </section>
 
       <!-- A TICK-BOX task (for work done outside the page) -->
       <section class="card" id="task-one" data-toc="Task" data-item="a_task" data-type="activity">
-        <div class="section-label"><span class="type-tag type-activity">Task</span><span class="points-tag">+10 points</span></div>
+        <div class="section-label"><span class="type-tag type-activity">Activity</span><span class="type-hint">Do it yourself</span><span class="points-tag">+10 points</span></div>
         <h2>Task title</h2>
         <div class="task-checklist" data-activity="a_task">
           <label><input type="checkbox"> First thing to tick</label>
@@ -62,7 +62,7 @@
 
       <!-- THE QUIZ (questions are written in lecture.js) -->
       <section class="card" id="quiz-section" data-toc="Quiz" data-item="quiz" data-type="quiz">
-        <div class="section-label"><span class="type-tag type-quiz">Quiz</span><span class="points-tag">5 points per question</span></div>
+        <div class="section-label"><span class="type-tag type-quiz">Quiz</span><span class="type-hint">Test yourself</span><span class="points-tag">5 points per question</span></div>
         <h2>Check your understanding</h2>
         <div id="quiz"></div>
       </section>
