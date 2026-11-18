@@ -1,13 +1,5 @@
 rules_version = '2';
 
-// Paste these into: Firebase console -> Firestore Database -> Rules
-//
-// - Anyone can READ a student document (needed for login by registration number
-//   and for the leaderboard).
-// - Nobody can CREATE or DELETE students from the website. You add eligible
-//   students yourself in the Firebase console.
-// - A student document can only be UPDATED in these fields: displayName,
-//   completed, scores, points, lastActive. Name must be 1-30 characters.
 
 service cloud.firestore {
   match /databases/{database}/documents {
