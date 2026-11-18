@@ -568,3 +568,84 @@ summary { cursor: pointer; color: var(--primary); }
   html { scroll-behavior: auto; }
   .wheel-bar { transition: none; }
 }
+
+/* ================================================================
+   INTERACTIVE DEMOS inside theory steps (added for Sessions 02 and 04)
+   A demo is a "try it" box. It never gives points; it just helps you understand.
+   ================================================================ */
+.demo {
+  border: 1px solid rgba(111, 155, 255, 0.35); border-radius: 12px;
+  background: var(--surface-2); padding: 18px 20px; margin: 18px 0;
+}
+.demo-tag {
+  display: inline-block; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--theory); background: var(--theory-soft); border-radius: 999px; padding: 2px 10px; margin-bottom: 10px;
+}
+.demo-controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px 22px; margin-bottom: 14px; }
+.demo-controls label { display: flex; justify-content: space-between; gap: 10px; font-size: 0.88rem; margin: 0; }
+.demo-controls label output { font-family: var(--mono); color: var(--theory); }
+.demo-controls input[type="range"] { width: 100%; accent-color: var(--theory); }
+.demo-stage { background: var(--code-bg); border: 1px dashed var(--input-border); border-radius: 10px; padding: 20px; overflow: auto; }
+.demo-caption { margin: 12px 0 0; font-size: 0.92rem; color: var(--muted); }
+.demo-code { margin: 12px 0 0; }
+.demo-buttons { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+.demo-buttons .btn.active { background: var(--primary-bg); border-color: var(--primary-bg); color: #fff; }
+
+/* demo form controls look like the rest of the dark page */
+.demo input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]):not([type="file"]):not([type="submit"]):not([type="reset"]),
+.demo select, .demo textarea {
+  width: 100%; padding: 9px 12px; border: 1px solid var(--input-border); border-radius: 8px;
+  font: inherit; background: var(--code-bg); color: var(--text);
+}
+.demo input:disabled, .demo input:read-only { opacity: 0.7; }
+.demo .row { display: grid; gap: 4px; margin-bottom: 12px; }
+.demo-result { margin-top: 12px; font-family: var(--mono); font-size: 0.88rem; background: var(--code-bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; white-space: pre-wrap; color: var(--accent-text); }
+
+/* box model picture */
+.bm-margin { background: rgba(245, 160, 81, 0.25); border: 1px dashed #f5a051; display: inline-block; }
+.bm-border { background: rgba(245, 196, 81, 0.35); border-style: solid; border-color: #f5c451; }
+.bm-padding { background: rgba(47, 211, 154, 0.28); }
+.bm-content { background: rgba(111, 155, 255, 0.45); color: #fff; display: grid; place-items: center; text-align: center; font-size: 0.85rem; font-weight: 700; min-width: 120px; min-height: 50px; padding: 4px 8px; }
+.bm-legend { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 0.85rem; color: var(--muted); margin-top: 12px; }
+.bm-legend span::before { content: ""; display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+.bm-legend .m::before { background: #f5a051; } .bm-legend .b::before { background: #f5c451; }
+.bm-legend .p::before { background: #2fd39a; } .bm-legend .c::before { background: #6f9bff; }
+
+/* position demo */
+.pos-parent { position: relative; height: 210px; border: 2px dashed #4a5b80; border-radius: 10px; background: var(--surface); }
+.pos-parent > .pos-label { position: absolute; right: 10px; bottom: 6px; font-size: 0.72rem; color: var(--muted); font-family: var(--mono); }
+.pos-box { width: 78px; height: 52px; border-radius: 8px; display: grid; place-items: center; font-size: 0.8rem; font-weight: 800; color: #05261b; }
+.pos-box.b1 { background: #6f9bff; } .pos-box.b3 { background: #b794f6; }
+.pos-box.b2 { background: #2fd39a; transition: all 0.3s ease; }
+.pos-ghost { position: absolute; width: 78px; height: 52px; border: 2px dashed var(--accent); border-radius: 8px; opacity: 0.55; pointer-events: none; }
+
+/* target-result panel in activities */
+.lab-prototype { margin: 14px 0 0; border: 1px solid var(--line); border-radius: 10px; background: var(--surface-2); }
+.lab-prototype summary { padding: 10px 14px; font-weight: 700; font-size: 0.9rem; }
+.lab-prototype iframe { display: block; width: calc(100% - 28px); margin: 0 14px 14px; height: 300px; }
+
+/* input type gallery */
+.type-gallery-stage { display: grid; gap: 10px; min-height: 76px; align-content: center; }
+@media (max-width: 900px) { .demo-controls { grid-template-columns: 1fr; } }
+
+/* More demo helpers (Session 04) */
+.demo { position: relative; }
+.demo-page { background: #ffffff; color: #1f2937; border-radius: 8px; padding: 18px; }
+.demo-page h1, .demo-page h3, .demo-page p { color: #1f2937; margin: 0 0 6px; }
+.demo-page h1 { font-size: 2rem; }
+.bm-content { width: 120px; height: 50px; min-width: 0; min-height: 0; padding: 0; }
+.flex-stage { display: flex; gap: 8px; height: 150px; border: 2px dashed #4a5b80; border-radius: 10px; padding: 8px; background: var(--surface); }
+.flex-box { min-width: 46px; min-height: 40px; border-radius: 8px; display: grid; place-items: center; font-weight: 800; color: #05261b; padding: 6px 12px; }
+.flex-box:nth-child(1) { background: #6f9bff; }
+.flex-box:nth-child(2) { background: #2fd39a; }
+.flex-box:nth-child(3) { background: #b794f6; }
+.hit { outline: 2px solid var(--accent); outline-offset: 2px; background: var(--accent-soft); border-radius: 4px; }
+.selector-input { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+.selector-input input { flex: 1; min-width: 180px; font-family: var(--mono); }
+.demo-fieldset-fix fieldset { border: 1px solid var(--input-border); border-radius: 8px; }
+.demo fieldset { border: 1px solid var(--input-border); border-radius: 8px; padding: 10px 14px; }
+.demo legend { color: var(--theory); font-weight: 700; padding: 0 6px; }
+.demo-stage label { display: flex; gap: 8px; align-items: center; font-weight: 500; margin: 0 0 6px; }
+.demo-frame { width: 100%; height: 150px; border: 1px solid var(--input-border); border-radius: 10px; background: #fff; }
+.pos-box { margin-bottom: 6px; }
+.pos-parent { padding: 8px; }

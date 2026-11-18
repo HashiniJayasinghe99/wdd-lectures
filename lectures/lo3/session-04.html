@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Session 04 | Web Design &amp; Development</title>
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<!-- data-root tells the shared code how to get back to the site's main folder -->
+<body data-root="../../" data-page="lecture">
+
+  <header id="site-header" class="site-header"></header>
+
+  <div class="container lecture-layout">
+
+    <!-- Filled in by js/lecture.js: progress wheel + contents list -->
+    <aside class="lecture-sidebar" id="lecture-sidebar" aria-label="Lecture contents"></aside>
+
+    <main class="lecture-main">
+      <div id="signin-banner"></div>
+
+      <!-- ============================================================
+           OVERVIEW (not tracked for progress)
+           ============================================================ -->
+      <section class="card lecture-hero" id="overview" data-toc="Overview">
+        <p class="eyebrow">LO3 &middot; Session 04</p>
+        <h1>Styling with CSS</h1>
+        <p class="muted">Web Design &amp; Development (Y/618/7419) &middot; Hashini Jayasinghe</p>
+
+        <h3>Learning outcomes of the module</h3>
+        <ul class="lo-list">
+          <li>LO1 Explain server technologies and management services associated with hosting and managing websites</li>
+          <li>LO2 Categorise website technologies, tools and software used to develop websites</li>
+          <li class="focus">LO3 Utilise website technologies, tools and techniques with good design principles to create a multipage website &larr; this session</li>
+          <li>LO4 Create and use a Test Plan to review the performance and design of a multipage website</li>
+        </ul>
+
+        <h3>Today's topics</h3>
+        <ul class="lo-list">
+          <li>What is CSS?</li>
+          <li>Basic CSS syntax, properties and values</li>
+          <li>The box model and positioning</li>
+          <li>Types of CSS</li>
+          <li>CSS selectors</li>
+        </ul>
+
+        <h3>How this lecture works</h3>
+        <p>Move through the lecture one step at a time with the <strong>Previous</strong> and <strong>Next</strong> buttons
+          (or the left and right arrow keys). Every step has a coloured label so you always know what you are doing:</p>
+        <div class="type-guide">
+          <div class="g-read"><span class="type-tag type-read">Theory</span><p>Reading and explanations. Stay on the step for a few seconds to earn <strong>2 points</strong>.</p></div>
+          <div class="g-activity"><span class="type-tag type-activity">Activity</span><p>Hands-on practice. Write code or finish a task to earn <strong>10 points</strong>.</p></div>
+          <div class="g-quiz"><span class="type-tag type-quiz">Quiz</span><p>Test yourself. Each correct answer earns <strong>5 points</strong>.</p></div>
+        </div>
+        <p class="muted">Sign in so your progress wheel and the leaderboard stay up to date. Look out for the blue <strong>Try it</strong> boxes in the theory steps: they are interactive demos that help you understand, and they do not give points.</p>
+      </section>
+
+      <!-- ============================================================
+           1. WHAT IS CSS?
+           ============================================================ -->
+      <section class="card" id="what" data-toc="1. What is CSS?" data-item="r_what" data-type="read">
+        <div class="section-label"><span class="type-tag type-read">Theory</span><span class="type-hint">Read and learn</span><span class="points-tag">+2 points</span></div>
+        <h2>What is CSS?</h2>
+        <p><strong>CSS</strong> stands for <strong>Cascading Style Sheets</strong>. It is the language we use to <strong>style an
+          HTML document</strong>. It describes how HTML elements should be displayed, bringing your web pages to life with
+          colours, layouts and visual effects.</p>
+        <p>Remember from Session 01: HTML is the structure, CSS is the style, and JavaScript is the behaviour. CSS never
+          changes <em>what</em> is on the page, only <em>how it looks</em>.</p>
+
+        <div class="demo" id="css-toggle-demo">
+          <span class="demo-tag">Try it</span>
+          <p class="muted" style="margin-bottom:10px">This is the same HTML twice. Switch CSS on and off.</p>
+          <div class="demo-buttons">
+            <button type="button" class="btn btn-ghost btn-small" id="css-off">HTML only</button>
+            <button type="button" class="btn btn-ghost btn-small" id="css-on">HTML + CSS</button>
+          </div>
+          <iframe class="demo-frame" id="css-toggle-frame" title="Same page with and without CSS" sandbox="" style="height:200px"></iframe>
+          <pre class="code demo-code" id="css-toggle-code-box" hidden><code id="css-toggle-code"></code></pre>
+          <p class="demo-caption" id="css-toggle-caption"></p>
+        </div>
+
+        <div class="callout">
+          <strong>Why "cascading"?</strong>
+          <p>Many rules can apply to the same element. CSS has a clear order for deciding which rule wins, so the styles
+            "cascade" down like a waterfall. You will see the details when we look at selectors.</p>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           2. CSS SYNTAX
+           ============================================================ -->
+      <section class="card" id="syntax" data-toc="2. CSS syntax" data-item="r_syntax" data-type="read">
+        <div class="section-label"><span class="type-tag type-read">Theory</span><span class="type-hint">Read and learn</span><span class="points-tag">+2 points</span></div>
+        <h2>Understanding the core: CSS syntax</h2>
+        <p>Every CSS rule consists of a <strong>selector</strong> and a <strong>declaration block</strong>.</p>
+        <ul>
+          <li>The <strong>selector</strong> points to the HTML element you want to style.</li>
+          <li>The <strong>declaration block</strong> (inside curly braces) contains one or more declarations, <strong>separated by semicolons</strong>.</li>
+        </ul>
+
+        <div class="anatomy" role="img" aria-label="A CSS rule: selector p, then in curly braces the property color with value blue, and the property font-size with value 12px">
+          <div class="anatomy-code"><span class="a-content">p</span> {
+            <span class="a-attr">color</span>: <span class="a-val">blue</span>;
+            <span class="a-attr">font-size</span>: <span class="a-val">12px</span>; }</div>
+          <div class="legend">
+            <span class="l-content">Selector</span>
+            <span class="l-attr">Property</span>
+            <span class="l-val">Value</span>
+          </div>
+        </div>
+
+        <h3>Properties and values</h3>
+        <p>A declaration includes a CSS <strong>property</strong> name, a colon, and a property <strong>value</strong>.
+          Properties are the aspects you want to change (for example <code>color</code>, <code>font-size</code>).
+          Values say how they should look (for example <code>blue</code>, <code>16px</code>).</p>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>Property</th><th>What it changes</th><th>Example value</th></tr></thead>
+            <tbody>
+              <tr><td><code>color</code></td><td>Text colour</td><td><code>blue</code>, <code>#3b6df0</code>, <code>rgb(59, 109, 240)</code></td></tr>
+              <tr><td><code>background-color</code></td><td>Background colour</td><td><code>lightyellow</code></td></tr>
+              <tr><td><code>font-size</code></td><td>Size of the text</td><td><code>16px</code>, <code>1.2em</code></td></tr>
+              <tr><td><code>font-family</code></td><td>The typeface</td><td><code>Arial, sans-serif</code></td></tr>
+              <tr><td><code>text-align</code></td><td>Left, centre or right</td><td><code>center</code></td></tr>
+              <tr><td><code>width</code> / <code>height</code></td><td>Size of an element</td><td><code>300px</code>, <code>50%</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="demo" id="syntax-demo">
+          <span class="demo-tag">Try it</span>
+          <p class="muted" style="margin-bottom:10px">Change the values and watch the rule being written for you.</p>
+          <div class="demo-controls">
+            <label for="pg-color">color</label>
+            <input type="color" id="pg-color" value="#3b6df0">
+            <label for="pg-size">font-size <output id="pg-size-out">32px</output></label>
+            <input type="range" id="pg-size" min="14" max="56" value="32">
+            <label for="pg-align">text-align</label>
+            <select id="pg-align"><option>left</option><option>center</option><option>right</option></select>
+          </div>
+          <div class="demo-stage"><div class="demo-page"><h1 id="pg-heading">Hello, CSS!</h1></div></div>
+          <pre class="code demo-code"><code id="pg-code"></code></pre>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           ACTIVITY 1: FIRST RULES
+           ============================================================ -->
+      <section class="card" id="act-syntax" data-toc="Activity 1: Your first rules" data-item="a_syntax" data-type="activity">
+        <div class="section-label"><span class="type-tag type-activity">Activity 1</span><span class="type-hint">Do it yourself</span><span class="points-tag">+10 points</span></div>
+        <h2>Write your first CSS rules</h2>
+        <p>The page below has a <code>&lt;style&gt;</code> block waiting for you. Write the rules that meet the goals and watch
+          the preview change.</p>
+        <div class="code-lab" data-activity="a_syntax"></div>
+      </section>
+
+      <!-- ============================================================
+           3. THE BOX MODEL
+           ============================================================ -->
+      <section class="card" id="box" data-toc="3. The box model" data-item="r_box" data-type="read">
+        <div class="section-label"><span class="type-tag type-read">Theory</span><span class="type-hint">Read and learn</span><span class="points-tag">+2 points</span></div>
+        <h2>The CSS box model</h2>
+        <p>Every HTML element is treated as a <strong>rectangular box</strong>, made of four layers:</p>
+        <ul>
+          <li><strong>Content:</strong> the actual text or image inside the box.</li>
+          <li><strong>Padding:</strong> clears an area around the content, <em>inside</em> the border.</li>
+          <li><strong>Border:</strong> a line that goes around the padding and content.</li>
+          <li><strong>Margin:</strong> clears an area <em>outside</em> the border, creating space between elements.</li>
+        </ul>
+
+        <div class="demo" id="box-demo">
+          <span class="demo-tag">Try it</span>
+          <div class="demo-controls">
+            <label for="bm-m">margin <output id="bm-m-out">20px</output></label>
+            <input type="range" id="bm-m" min="0" max="50" value="20">
+            <label for="bm-b">border <output id="bm-b-out">4px</output></label>
+            <input type="range" id="bm-b" min="0" max="20" value="4">
+            <label for="bm-p">padding <output id="bm-p-out">20px</output></label>
+            <input type="range" id="bm-p" min="0" max="50" value="20">
+          </div>
+          <div class="demo-stage" style="text-align:center">
+            <div class="bm-margin" id="bm-margin"><div class="bm-border" id="bm-border"><div class="bm-padding" id="bm-padding"><div class="bm-content">Content</div></div></div></div>
+          </div>
+          <div class="bm-legend"><span class="m">Margin</span><span class="b">Border</span><span class="p">Padding</span><span class="c">Content</span></div>
+          <pre class="code demo-code"><code id="bm-code"></code></pre>
+          <p class="demo-caption" id="bm-total"></p>
+        </div>
+
+        <div class="callout callout-tip">
+          <strong>Shorthand</strong>
+          <p><code>padding: 10px;</code> sets all four sides. <code>padding: 10px 20px 5px 15px;</code> goes clockwise from the top:
+            top, right, bottom, left. <code>margin</code> works the same way.</p>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           ACTIVITY 2: BOX MODEL
+           ============================================================ -->
+      <section class="card" id="act-box" data-toc="Activity 2: Box model" data-item="a_box" data-type="activity">
+        <div class="section-label"><span class="type-tag type-activity">Activity 2</span><span class="type-hint">Do it yourself</span><span class="points-tag">+10 points</span></div>
+        <h2>Style a box</h2>
+        <p>Turn the plain div into a tidy card using all four layers of the box model.</p>
+        <div class="code-lab" data-activity="a_box"></div>
+      </section>
+
+      <!-- ============================================================
+           4. POSITIONING
+           ============================================================ -->
+      <section class="card" id="position" data-toc="4. Positioning" data-item="r_position" data-type="read">
+        <div class="section-label"><span class="type-tag type-read">Theory</span><span class="type-hint">Read and learn</span><span class="points-tag">+2 points</span></div>
+        <h2>Positioning elements: relative vs. absolute</h2>
+        <div class="grid grid-2">
+          <div class="idea"><h3>Relative positioning</h3>
+            <p>The element is positioned <strong>relative to its normal position</strong>. The offsets (<code>top</code>, <code>bottom</code>,
+              <code>left</code>, <code>right</code>) move it away from where it would normally be. The space it used to fill stays reserved.</p></div>
+          <div class="idea"><h3>Absolute positioning</h3>
+            <p>The element is positioned <strong>relative to its nearest positioned ancestor</strong> (instead of the page). It is
+              <strong>removed from the normal flow</strong>, so other elements ignore it. This allows precise placement.</p></div>
+        </div>
+
+<pre class="code"><code>.box-2 { position: relative; top: 20px; left: 30px; }
+.box-4 { position: absolute; top: 0; right: 0; }</code></pre>
+
+        <div class="demo" id="position-demo">
+          <span class="demo-tag">Try it</span>
+          <p class="muted" style="margin-bottom:10px">Box 2 is the green one. Change its <code>position</code> and move it with <code>top</code> and <code>left</code>.
+            Watch what happens to box 3.</p>
+          <div class="demo-buttons" id="pos-buttons"></div>
+          <div class="demo-controls">
+            <label for="pos-top">top <output id="pos-top-out">20px</output></label>
+            <input type="range" id="pos-top" min="0" max="90" value="20">
+            <label for="pos-left">left <output id="pos-left-out">60px</output></label>
+            <input type="range" id="pos-left" min="0" max="200" value="60">
+            <label style="grid-column:1 / -1;justify-content:flex-start;gap:8px;align-items:center">
+              <input type="checkbox" id="pos-parent" checked> The parent box has <code>position: relative</code></label>
+          </div>
+          <div class="demo-stage">
+            <div class="pos-parent" id="pos-parent-box">
+              <div class="pos-box b1">Box 1</div>
+              <div class="pos-box b2" id="pos-box2">Box 2</div>
+              <div class="pos-box b3">Box 3</div>
+              <div class="pos-ghost" id="pos-ghost" hidden></div>
+              <span class="pos-label">parent</span>
+            </div>
+          </div>
+          <pre class="code demo-code"><code id="pos-code"></code></pre>
+          <p class="demo-caption" id="pos-caption"></p>
+        </div>
+
+        <h3>Other position values</h3>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>Value</th><th>Behaviour</th></tr></thead>
+            <tbody>
+              <tr><td><code>static</code></td><td>The default. Normal flow. <code>top</code> and <code>left</code> do nothing</td></tr>
+              <tr><td><code>relative</code></td><td>Moves from its normal place; the gap stays</td></tr>
+              <tr><td><code>absolute</code></td><td>Placed from the nearest positioned ancestor; leaves the flow</td></tr>
+              <tr><td><code>fixed</code></td><td>Stays in the same place on the screen while you scroll (for example a top menu)</td></tr>
+              <tr><td><code>sticky</code></td><td>Scrolls normally, then sticks when it reaches a set position</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           ACTIVITY 3: POSITIONING
+           ============================================================ -->
+      <section class="card" id="act-position" data-toc="Activity 3: Positioning" data-item="a_position" data-type="activity">
+        <div class="section-label"><span class="type-tag type-activity">Activity 3</span><span class="type-hint">Do it yourself</span><span class="points-tag">+10 points</span></div>
+        <h2>Pin a badge to a card</h2>
+        <p>Online shops often pin a "NEW" badge to the corner of a product card. Do it with absolute positioning.</p>
+        <div class="code-lab" data-activity="a_position"></div>
+      </section>
+
+      <!-- ============================================================
+           5. THREE WAYS TO APPLY CSS
+           ============================================================ -->
+      <section class="card" id="ways" data-toc="5. Three ways to use CSS" data-item="r_ways" data-type="read">
+        <div class="section-label"><span class="type-tag type-read">Theory</span><span class="type-hint">Read and learn</span><span class="points-tag">+2 points</span></div>
+        <h2>Three ways to apply CSS to your HTML</h2>
+        <div class="grid grid-3">
+          <div class="idea"><h3>Inline styles</h3>
+            <p>Applied directly to one element with the <code>style</code> attribute. Best for unique, one-off styling, but can make code hard to manage.</p></div>
+          <div class="idea"><h3>Internal styles</h3>
+            <p>Written inside <code>&lt;style&gt;</code> tags in the <code>&lt;head&gt;</code> of one HTML document. Ideal for single-page styles.</p></div>
+          <div class="idea"><h3>External stylesheet</h3>
+            <p>Written in a separate <code>.css</code> file and linked to the HTML. <strong>The most common and recommended way</strong> for large websites.</p></div>
+        </div>
+
+        <div class="demo" id="ways-demo">
+          <span class="demo-tag">Try it</span>
+          <p class="muted" style="margin-bottom:10px">Three different pieces of code, one result. Pick a way to see its code.</p>
+          <div class="demo-buttons" id="ways-buttons"></div>
+          <iframe class="demo-frame" id="ways-frame" title="Result" sandbox="" style="height:90px"></iframe>
+          <pre class="code demo-code"><code id="ways-code"></code></pre>
+          <p class="demo-caption" id="ways-caption"></p>
+        </div>
+
+        <div class="callout callout-note">
+          <strong>When rules clash</strong>
+          <p>If two rules style the same thing differently, an inline style beats the others. Between an internal and an
+            external stylesheet, the one that comes <em>later</em> in the page wins.</p>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           ACTIVITY 4: THREE WAYS
+           ============================================================ -->
+      <section class="card" id="act-ways" data-toc="Activity 4: Three ways" data-item="a_ways" data-type="activity">
+        <div class="section-label"><span class="type-tag type-activity">Activity 4</span><span class="type-hint">Do it yourself</span><span class="points-tag">+10 points</span></div>
+        <h2>Try all three ways</h2>
+        <p>Style the same page using inline, internal and external CSS.</p>
+        <div class="code-lab" data-activity="a_ways"></div>
+      </section>
+
+      <!-- ============================================================
+           6. SELECTORS
+           ============================================================ -->
+      <section class="card" id="selectors" data-toc="6. CSS selectors" data-item="r_selectors" data-type="read">
+        <div class="section-label"><span class="type-tag type-read">Theory</span><span class="type-hint">Read and learn</span><span class="points-tag">+2 points</span></div>
+        <h2>Powerful CSS selectors for precise styling</h2>
+        <p>Selectors are <strong>patterns used to select the HTML elements</strong> you want to style. Mastering them is key to
+          efficient and effective CSS.</p>
+
+        <div class="grid grid-2">
+          <div class="idea"><h3>Element selector</h3>
+            <p>Targets <strong>all instances</strong> of an HTML element, such as <code>p</code> for paragraphs or <code>h1</code> for main headings.</p>
+            <p class="example"><code>p { color: navy; }</code></p></div>
+          <div class="idea"><h3>Class selector</h3>
+            <p>Targets elements with a specific <code>class</code> attribute. Identified by a <strong>dot (.)</strong> followed by the class name. Many elements can share a class.</p>
+            <p class="example"><code>.note { color: green; }</code> &rarr; <code>&lt;p class="note"&gt;</code></p></div>
+          <div class="idea"><h3>ID selector</h3>
+            <p>Targets a <strong>single, unique</strong> element with a specific <code>id</code> attribute. Identified by a <strong>hash (#)</strong> followed by the ID name. Use each id only once per page.</p>
+            <p class="example"><code>#unique-id { color: red; }</code> &rarr; <code>&lt;p id="unique-id"&gt;</code></p></div>
+          <div class="idea"><h3>Grouping selector</h3>
+            <p>Applies the <strong>same style to several selectors</strong> by separating them with commas.</p>
+            <p class="example"><code>h1, h2, p { font-family: Arial; }</code></p></div>
+        </div>
+
+        <div class="demo" id="selector-demo">
+          <span class="demo-tag">Try it</span>
+          <p class="muted" style="margin-bottom:10px">Type a selector (or pick one) and see which elements it would select.</p>
+          <div class="selector-input">
+            <input type="text" id="selector-box" value="p" aria-label="CSS selector" autocomplete="off" spellcheck="false">
+          </div>
+          <div class="demo-buttons" id="selector-presets"></div>
+          <div class="demo-stage"><div class="demo-page" id="selector-page">
+            <h1 id="main-title">Web Design</h1>
+            <h2>CSS selectors</h2>
+            <p class="note">A paragraph with the class "note".</p>
+            <p>A normal paragraph.</p>
+            <p class="note" id="last-note">Another "note" paragraph with the id "last-note".</p>
+          </div></div>
+          <p class="demo-caption" id="selector-caption"></p>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           ACTIVITY 5: SELECTORS
+           ============================================================ -->
+      <section class="card" id="act-selectors" data-toc="Activity 5: Selectors" data-item="a_selectors" data-type="activity">
+        <div class="section-label"><span class="type-tag type-activity">Activity 5</span><span class="type-hint">Do it yourself</span><span class="points-tag">+10 points</span></div>
+        <h2>Use all four selectors</h2>
+        <p>Practise element, class, id and grouping selectors on one page.</p>
+        <div class="code-lab" data-activity="a_selectors"></div>
+      </section>
+
+      <!-- ============================================================
+           7. ADVANCED + BEST PRACTICES
+           ============================================================ -->
+      <section class="card" id="advanced" data-toc="7. Going further" data-item="r_advanced" data-type="read">
+        <div class="section-label"><span class="type-tag type-read">Theory</span><span class="type-hint">Read and learn</span><span class="points-tag">+2 points</span></div>
+        <h2>Advanced CSS techniques for modern websites</h2>
+        <p>Once you master the fundamentals, explore these areas to build more dynamic and responsive designs:</p>
+        <div class="grid grid-3">
+          <div class="idea"><h3>Flexbox &amp; Grid layout</h3><p>Powerful tools for creating complex, responsive layouts with ease.</p></div>
+          <div class="idea"><h3>Responsive design</h3><p>Use media queries so a page adapts from desktops to mobile phones, for a better user experience.</p></div>
+          <div class="idea"><h3>Transitions &amp; animations</h3><p>Add smooth movement and effects (for example a button that fades colour on hover) to enhance the user experience.</p></div>
+        </div>
+
+        <div class="demo" id="flex-demo">
+          <span class="demo-tag">Try it</span>
+          <p class="muted" style="margin-bottom:10px">A taste of Flexbox: change how three boxes are laid out.</p>
+          <div class="demo-controls">
+            <label for="flex-direction">flex-direction</label>
+            <select id="flex-direction"><option>row</option><option>column</option></select>
+            <label for="flex-justify">justify-content</label>
+            <select id="flex-justify"><option>flex-start</option><option>center</option><option>space-between</option><option>flex-end</option></select>
+            <label for="flex-align">align-items</label>
+            <select id="flex-align"><option>flex-start</option><option>center</option><option>flex-end</option></select>
+          </div>
+          <div class="flex-stage" id="flex-stage"><div class="flex-box">1</div><div class="flex-box">2</div><div class="flex-box">3</div></div>
+          <pre class="code demo-code"><code id="flex-code"></code></pre>
+        </div>
+
+        <h2 style="margin-top:28px">Best practices: clean and maintainable CSS</h2>
+        <div class="grid grid-3">
+          <div class="idea"><h3>Organise your code</h3><p>Use comments, consistent naming conventions and modular CSS for better readability and maintainability.</p></div>
+          <div class="idea"><h3>Prioritise specificity</h3><p>Understand how different selectors override each other, to avoid unexpected styling issues.</p></div>
+          <div class="idea"><h3>Validate your CSS</h3><p>Use a CSS validator (such as the <a href="https://jigsaw.w3.org/css-validator/" target="_blank" rel="noopener">W3C CSS Validator</a>) to catch errors and check cross-browser compatibility.</p></div>
+        </div>
+
+        <h3 style="margin-top:24px">Which rule wins? (specificity)</h3>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>Strongest to weakest</th><th>Example</th></tr></thead>
+            <tbody>
+              <tr><td>1. Inline style</td><td><code>&lt;p style="color: red;"&gt;</code></td></tr>
+              <tr><td>2. ID selector</td><td><code>#intro { color: green; }</code></td></tr>
+              <tr><td>3. Class selector</td><td><code>.note { color: blue; }</code></td></tr>
+              <tr><td>4. Element selector</td><td><code>p { color: black; }</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           ACTIVITY 6: RESTYLE MYWEBPAGE (from the slides)
+           ============================================================ -->
+      <section class="card" id="act-mypage" data-toc="Activity 6: Restyle MyWebPage" data-item="a_mypage" data-type="activity">
+        <div class="section-label"><span class="type-tag type-activity">Activity 6</span><span class="type-hint">Do it yourself</span><span class="points-tag">+10 points</span></div>
+        <h2>Update MyWebPage.html with style changes</h2>
+        <p>Back to the page you built in Session 01. Update it with the style changes below. Compare your result with the
+          finished page.</p>
+        <div class="code-lab" data-activity="a_mypage"></div>
+        <div class="callout callout-note">
+          <strong>Do it in VS Code too</strong>
+          <p>Copy your finished code into <code>MyWebPage.html</code> and then try the <em>external</em> way: move the CSS into
+            <code>style.css</code> and link it from the <code>&lt;head&gt;</code>.</p>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           QUIZ
+           ============================================================ -->
+      <section class="card" id="quiz-section" data-toc="Quiz" data-item="quiz" data-type="quiz">
+        <div class="section-label"><span class="type-tag type-quiz">Quiz</span><span class="type-hint">Test yourself</span><span class="points-tag">up to 50 points</span></div>
+        <h2>Check your understanding</h2>
+        <div id="quiz"></div>
+      </section>
+
+      <!-- ============================================================
+           SUMMARY (not tracked)
+           ============================================================ -->
+      <section class="card" id="summary" data-toc="Summary">
+        <h2>Summary</h2>
+        <ul>
+          <li>CSS (Cascading Style Sheets) styles HTML. A rule is a <strong>selector</strong> plus a <strong>declaration block</strong> of <code>property: value;</code> pairs.</li>
+          <li>Every element is a box: <strong>content, padding, border, margin</strong>.</li>
+          <li><code>position: relative</code> moves an element from its normal place. <code>position: absolute</code> places it from the nearest positioned ancestor.</li>
+          <li>CSS can be <strong>inline</strong>, <strong>internal</strong> or <strong>external</strong>. External stylesheets are best for real websites.</li>
+          <li>Selectors: <code>element</code>, <code>.class</code>, <code>#id</code> and <code>grouping, selectors</code>.</li>
+          <li>Keep CSS clean: comment it, understand specificity and validate it.</li>
+        </ul>
+        <div class="callout callout-tip">
+          <strong>Before the next session</strong>
+          <p>Finish any activities you have not completed. Then style your own assignment pages with an external stylesheet.</p>
+        </div>
+        <p><a class="btn btn-primary" href="../../leaderboard.html">See the leaderboard</a>
+          <a class="btn btn-ghost" href="../../index.html">Back to all lectures</a></p>
+      </section>
+
+    </main>
+  </div>
+
+  <script type="module" src="session-04.js"></script>
+</body>
+</html>

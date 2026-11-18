@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Session 02 | Web Design &amp; Development</title>
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<!-- data-root tells the shared code how to get back to the site's main folder -->
+<body data-root="../../" data-page="lecture">
+
+  <header id="site-header" class="site-header"></header>
+
+  <div class="container lecture-layout">
+
+    <!-- Filled in by js/lecture.js: progress wheel + contents list -->
+    <aside class="lecture-sidebar" id="lecture-sidebar" aria-label="Lecture contents"></aside>
+
+    <main class="lecture-main">
+      <div id="signin-banner"></div>
+
+      <!-- ============================================================
+           OVERVIEW (not tracked for progress)
+           ============================================================ -->
+      <section class="card lecture-hero" id="overview" data-toc="Overview">
+        <p class="eyebrow">LO3 &middot; Session 02</p>
+        <h1>HTML Forms</h1>
+        <p class="muted">Web Design &amp; Development (Y/618/7419) &middot; Hashini Jayasinghe</p>
+
+        <h3>Learning outcomes of the module</h3>
+        <ul class="lo-list">
+          <li>LO1 Explain server technologies and management services associated with hosting and managing websites</li>
+          <li>LO2 Categorise website technologies, tools and software used to develop websites</li>
+          <li class="focus">LO3 Utilise website technologies, tools and techniques with good design principles to create a multipage website &larr; this session</li>
+          <li>LO4 Create and use a Test Plan to review the performance and design of a multipage website</li>
+        </ul>
+
+        <h3>Today's topics</h3>
+        <ul class="lo-list">
+          <li>Get the idea about HTML forms</li>
+          <li>Identify HTML form attributes</li>
+          <li>Identify HTML form elements</li>
+          <li>Learn the HTML input types and input attributes</li>
+        </ul>
+
+        <h3>How this lecture works</h3>
+        <p>Move through the lecture one step at a time with the <strong>Previous</strong> and <strong>Next</strong> buttons
+          (or the left and right arrow keys). Every step has a coloured label so you always know what you are doing:</p>
+        <div class="type-guide">
+          <div class="g-read"><span class="type-tag type-read">Theory</span><p>Reading and explanations. Stay on the step for a few seconds to earn <strong>2 points</strong>.</p></div>
+          <div class="g-activity"><span class="type-tag type-activity">Activity</span><p>Hands-on practice. Write code or finish a task to earn <strong>10 points</strong>.</p></div>
+          <div class="g-quiz"><span class="type-tag type-quiz">Quiz</span><p>Test yourself. Each correct answer earns <strong>5 points</strong>.</p></div>
+        </div>
+        <p class="muted">Sign in so your progress wheel and the leaderboard stay up to date. Look out for the blue <strong>Try it</strong> boxes in the theory steps: they are interactive demos that help you understand, and they do not give points.</p>
+      </section>
+
+      <!-- ============================================================
+           1. HTML FORMS
+           ============================================================ -->
+      <section class="card" id="forms" data-toc="1. HTML forms" data-item="r_forms" data-type="read">
+        <div class="section-label"><span class="type-tag type-read">Theory</span><span class="type-hint">Read and learn</span><span class="points-tag">+2 points</span></div>
+        <h2>HTML forms</h2>
+        <p><strong>An HTML form is used to collect user input.</strong> The input is most often sent to a server for processing.
+          You use forms every day: logging in, signing up, searching, contacting a company, paying at a checkout.</p>
+        <p>The <code>&lt;form&gt;</code> element creates a form. Everything the user types or picks goes inside it.</p>
+
+<pre class="code"><code>&lt;form action="/register" method="post"&gt;
+  &lt;label for="name"&gt;Name:&lt;/label&gt;
+  &lt;input type="text" id="name" name="name"&gt;
+  &lt;input type="submit" value="Send"&gt;
+&lt;/form&gt;</code></pre>
+
+        <h3>Form attributes</h3>
+        <p>Attributes on the <code>&lt;form&gt;</code> tag say <em>where</em> and <em>how</em> the data is sent.</p>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>Attribute</th><th>What it does</th><th>Example</th></tr></thead>
+            <tbody>
+              <tr><td><code>action</code></td><td>The address (URL) that receives the data</td><td><code>action="/register"</code></td></tr>
+              <tr><td><code>method</code></td><td>How the data is sent: <code>get</code> or <code>post</code></td><td><code>method="post"</code></td></tr>
+              <tr><td><code>name</code></td><td>Gives the form a name</td><td><code>name="signup"</code></td></tr>
+              <tr><td><code>target</code></td><td>Where the answer opens: <code>_self</code> (same tab) or <code>_blank</code> (new tab)</td><td><code>target="_blank"</code></td></tr>
+              <tr><td><code>autocomplete</code></td><td>Lets the browser suggest saved values (<code>on</code> or <code>off</code>)</td><td><code>autocomplete="off"</code></td></tr>
+              <tr><td><code>enctype</code></td><td>How the data is packed. Use <code>multipart/form-data</code> with <code>post</code> when the form uploads files</td><td><code>enctype="multipart/form-data"</code></td></tr>
+              <tr><td><code>novalidate</code></td><td>Switches off the browser's built-in checking</td><td><code>novalidate</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 style="margin-top:24px">GET or POST?</h3>
+        <div class="grid grid-2">
+          <div class="idea"><h3>GET</h3>
+            <p>Puts the data in the web address, like <code>?name=Nimal</code>. Anyone can see it, and the page can be bookmarked.</p>
+            <p class="example">Use for: searches and filters.</p></div>
+          <div class="idea"><h3>POST</h3>
+            <p>Sends the data inside the request, so it is not shown in the address. It can carry much more data.</p>
+            <p class="example">Use for: passwords, sign-ups, anything that changes something.</p></div>
+        </div>
+
+        <div class="callout callout-note">
+          <strong>A form only collects data</strong>
+          <p>Something on a server (or JavaScript in the page) has to process what is sent. In this session we focus on
+            <em>building</em> forms that look right and check the user's input. In the practice editors below, pressing
+            Submit shows a message instead of sending anything.</p>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           2. FORM ELEMENTS
+           ============================================================ -->
+      <section class="card" id="elements" data-toc="2. Form elements" data-item="r_elements" data-type="read">
+        <div class="section-label"><span class="type-tag type-read">Theory</span><span class="type-hint">Read and learn</span><span class="points-tag">+2 points</span></div>
+        <h2>HTML form elements</h2>
+        <p>A <code>&lt;form&gt;</code> can contain one or more of these form elements:</p>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>Element</th><th>What it is for</th></tr></thead>
+            <tbody>
+              <tr><td><code>&lt;input&gt;</code></td><td>A field the user fills in. It looks different depending on its <code>type</code></td></tr>
+              <tr><td><code>&lt;label&gt;</code></td><td>A caption for a field</td></tr>
+              <tr><td><code>&lt;select&gt;</code></td><td>A drop-down list</td></tr>
+              <tr><td><code>&lt;option&gt;</code></td><td>One choice inside a drop-down list</td></tr>
+              <tr><td><code>&lt;optgroup&gt;</code></td><td>Groups options inside a drop-down list</td></tr>
+              <tr><td><code>&lt;textarea&gt;</code></td><td>A multi-line text field</td></tr>
+              <tr><td><code>&lt;button&gt;</code></td><td>A clickable button</td></tr>
+              <tr><td><code>&lt;fieldset&gt;</code></td><td>Groups related fields in a box</td></tr>
+              <tr><td><code>&lt;legend&gt;</code></td><td>A caption for a fieldset</td></tr>
+              <tr><td><code>&lt;datalist&gt;</code></td><td>A list of suggestions for an input</td></tr>
+              <tr><td><code>&lt;output&gt;</code></td><td>Shows the result of a calculation</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="demo" id="element-demo">
+          <span class="demo-tag">Try it</span>
+          <p class="muted" style="margin-bottom:10px">Four elements you will not use in today's activities, but should know. Pick one to see it working.</p>
+          <div class="demo-buttons" id="element-buttons"></div>
+          <div class="demo-stage" id="element-stage"></div>
+          <pre class="code demo-code"><code id="element-code"></code></pre>
+          <p class="demo-caption" id="element-caption"></p>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           3. THE INPUT ELEMENT
+           ============================================================ -->
+      <section class="card" id="input" data-toc="3. The input element" data-item="r_input" data-type="read">
+        <div class="section-label"><span class="type-tag type-read">Theory</span><span class="type-hint">Read and learn</span><span class="points-tag">+2 points</span></div>
+        <h2>The &lt;input&gt; element</h2>
+        <p>The <code>&lt;input&gt;</code> element is the <strong>most used form element</strong>. It can be displayed in many
+          ways, depending on its <code>type</code> attribute. The four you will meet first:</p>
+        <ul>
+          <li><code>type="text"</code> displays a single-line text field</li>
+          <li><code>type="radio"</code> displays a radio button (choose <em>one</em> of many)</li>
+          <li><code>type="checkbox"</code> displays a checkbox (choose <em>zero or more</em> of many)</li>
+          <li><code>type="submit"</code> displays a button that submits the form</li>
+        </ul>
+
+        <div class="demo" id="input-demo">
+          <span class="demo-tag">Try it</span>
+          <p class="muted" style="margin-bottom:10px">Click an input type to see how it looks and what the code is.</p>
+          <div class="demo-buttons" id="input-buttons"></div>
+          <div class="demo-stage type-gallery-stage" id="input-stage"></div>
+          <pre class="code demo-code"><code id="input-code"></code></pre>
+          <p class="demo-caption" id="input-caption"></p>
+        </div>
+
+        <div class="callout callout-tip">
+          <strong>Always give an input a name</strong>
+          <p>The <code>name</code> attribute labels the data when it is sent (for example <code>email=nimal@example.com</code>).
+            An input without a name is not sent at all. Radio buttons that belong together must share the <em>same</em> name,
+            and that is what makes them "one choice only".</p>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           4. THE LABEL ELEMENT
+           ============================================================ -->
+      <section class="card" id="label" data-toc="4. The label element" data-item="r_label" data-type="read">
+        <div class="section-label"><span class="type-tag type-read">Theory</span><span class="type-hint">Read and learn</span><span class="points-tag">+2 points</span></div>
+        <h2>The &lt;label&gt; element</h2>
+        <p>The <code>&lt;label&gt;</code> element defines a label for a form element. The <code>for</code> attribute of the label
+          must be <strong>equal to the <code>id</code></strong> of the input, to bind them together.</p>
+
+<pre class="code"><code>&lt;label for="email"&gt;Email:&lt;/label&gt;
+&lt;input type="email" id="email" name="email"&gt;</code></pre>
+
+        <div class="grid grid-3">
+          <div class="idea"><h3>Bigger click area</h3><p>Clicking the label selects the input. Great for small radio buttons and checkboxes.</p></div>
+          <div class="idea"><h3>Accessible</h3><p>Screen readers read the label out when the field is selected, so people who cannot see the screen know what to type.</p></div>
+          <div class="idea"><h3>Clear for everyone</h3><p>A visible caption tells every user what each field is for.</p></div>
+        </div>
+
+        <div class="demo" id="label-demo">
+          <span class="demo-tag">Try it</span>
+          <p class="muted" style="margin-bottom:10px">Click the <em>words</em> next to each checkbox. Only one of them reacts. Why?</p>
+          <div class="demo-stage">
+            <div class="row"><span style="display:flex;gap:10px;align-items:center">
+              <input type="checkbox" id="demo-no-for"><label style="margin:0;font-weight:500">Subscribe (label has no <code>for</code>)</label></span></div>
+            <div class="row"><span style="display:flex;gap:10px;align-items:center">
+              <input type="checkbox" id="demo-with-for"><label for="demo-with-for" style="margin:0;font-weight:500">Subscribe (label has <code>for="demo-with-for"</code>)</label></span></div>
+          </div>
+          <p class="demo-caption" id="label-caption">Try clicking each label.</p>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           ACTIVITY 1: YOUR FIRST FORM
+           ============================================================ -->
+      <section class="card" id="act-first" data-toc="Activity 1: Your first form" data-item="a_first_form" data-type="activity">
+        <div class="section-label"><span class="type-tag type-activity">Activity 1</span><span class="type-hint">Do it yourself</span><span class="points-tag">+10 points</span></div>
+        <h2>Your first form</h2>
+        <p>A warm-up before the big form. Build a small contact form with a name, an email and a button. Press
+          <strong>Submit</strong> in the preview to try it.</p>
+        <div class="code-lab" data-activity="a_first_form"></div>
+      </section>
+
+      <!-- ============================================================
+           ACTIVITY 2: REGISTRATION FORM
+           ============================================================ -->
+      <section class="card" id="act-registration" data-toc="Activity 2: Registration form" data-item="a_registration" data-type="activity">
+        <div class="section-label"><span class="type-tag type-activity">Activity 2</span><span class="type-hint">Do it yourself</span><span class="points-tag">+10 points</span></div>
+        <h2>Create a registration form</h2>
+        <p>Let's create a simple HTML form. Look at the <strong>prototype</strong> below and try to develop it by yourself.
+          Choose the right <code>type</code> for every field.</p>
+        <div class="code-lab" data-activity="a_registration"></div>
+      </section>
+
+      <!-- ============================================================
+           5. SELECT, TEXTAREA, BUTTON
+           ============================================================ -->
+      <section class="card" id="controls" data-toc="5. select, textarea, button" data-item="r_controls" data-type="read">
+        <div class="section-label"><span class="type-tag type-read">Theory</span><span class="type-hint">Read and learn</span><span class="points-tag">+2 points</span></div>
+        <h2>&lt;select&gt;, &lt;textarea&gt; and &lt;button&gt;</h2>
+
+        <h3>The &lt;select&gt; element</h3>
+        <p>The <code>&lt;select&gt;</code> element defines a <strong>drop-down list</strong>. Inside it you put
+          <code>&lt;option&gt;</code> elements. Each <code>&lt;option&gt;</code> defines one choice the user can select.</p>
+<pre class="code"><code>&lt;label for="city"&gt;City:&lt;/label&gt;
+&lt;select id="city" name="city"&gt;
+  &lt;option value="colombo"&gt;Colombo&lt;/option&gt;
+  &lt;option value="galle"&gt;Galle&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+
+        <h3>The &lt;textarea&gt; element</h3>
+        <p>The <code>&lt;textarea&gt;</code> element defines a <strong>multi-line input field</strong>. Its size is set with
+          <code>rows</code> (visible lines) and <code>cols</code> (visible width in characters).</p>
+
+        <div class="demo" id="textarea-demo">
+          <span class="demo-tag">Try it</span>
+          <div class="demo-controls">
+            <label>rows <output id="rows-out">4</output></label>
+            <input type="range" id="rows-range" min="2" max="10" value="4" aria-label="Rows">
+            <label>cols <output id="cols-out">30</output></label>
+            <input type="range" id="cols-range" min="10" max="50" value="30" aria-label="Columns">
+          </div>
+          <div class="demo-stage"><textarea id="demo-textarea" rows="4" cols="30" style="width:auto" placeholder="Type here..."></textarea></div>
+          <pre class="code demo-code"><code id="textarea-code"></code></pre>
+        </div>
+
+        <h3>The &lt;button&gt; element</h3>
+        <p>The <code>&lt;button&gt;</code> element defines a <strong>clickable button</strong>. Its <code>type</code> decides what it does:</p>
+        <ul>
+          <li><code>type="submit"</code> sends the form (this is the default inside a form)</li>
+          <li><code>type="reset"</code> clears the form back to its starting values</li>
+          <li><code>type="button"</code> does nothing by itself, so you can attach your own action</li>
+        </ul>
+<pre class="code"><code>&lt;button type="button" onclick="alert('Hello!')"&gt;Say Hello&lt;/button&gt;</code></pre>
+        <div class="callout">
+          <strong>What is onclick?</strong>
+          <p>It tells the browser to run a little JavaScript when the button is clicked. <code>alert('Hello!')</code> pops up a
+            message box. You will learn JavaScript properly later; for now you can copy this pattern.</p>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           ACTIVITY 3: UPGRADE THE FORM
+           ============================================================ -->
+      <section class="card" id="act-upgrade" data-toc="Activity 3: Upgrade the form" data-item="a_upgrade" data-type="activity">
+        <div class="section-label"><span class="type-tag type-activity">Activity 3</span><span class="type-hint">Do it yourself</span><span class="points-tag">+10 points</span></div>
+        <h2>Upgrade your form</h2>
+        <p>Upgrade your existing form with the new requirements. Your Activity 2 form is already in the editor.</p>
+        <div class="code-lab" data-activity="a_upgrade"></div>
+      </section>
+
+      <!-- ============================================================
+           6. INPUT ATTRIBUTES
+           ============================================================ -->
+      <section class="card" id="attributes" data-toc="6. Input attributes" data-item="r_attributes" data-type="read">
+        <div class="section-label"><span class="type-tag type-read">Theory</span><span class="type-hint">Read and learn</span><span class="points-tag">+2 points</span></div>
+        <h2>HTML input attributes</h2>
+        <p>Attributes make inputs smarter. They can give hints, set limits, and stop users sending bad data. The browser checks
+          many of them for you before the form is submitted. This is called <strong>form validation</strong>.</p>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>Attribute</th><th>What it does</th></tr></thead>
+            <tbody>
+              <tr><td><code>name</code></td><td>The name of the data. No name, nothing sent</td></tr>
+              <tr><td><code>value</code></td><td>The starting value (or the value that is sent for radios and checkboxes)</td></tr>
+              <tr><td><code>placeholder</code></td><td>Grey hint text shown while the field is empty</td></tr>
+              <tr><td><code>required</code></td><td>The field must be filled in before the form can be submitted</td></tr>
+              <tr><td><code>readonly</code></td><td>The user can see the value but cannot change it. It <em>is</em> sent</td></tr>
+              <tr><td><code>disabled</code></td><td>The field is greyed out and unusable. It is <em>not</em> sent</td></tr>
+              <tr><td><code>min</code> / <code>max</code> / <code>step</code></td><td>The smallest and largest value (and the step) for numbers, dates and ranges</td></tr>
+              <tr><td><code>maxlength</code></td><td>The most characters that can be typed</td></tr>
+              <tr><td><code>pattern</code></td><td>A rule the text must match, for example <code>[0-9]{10}</code> for exactly 10 digits</td></tr>
+              <tr><td><code>autofocus</code></td><td>The field is selected as soon as the page loads</td></tr>
+              <tr><td><code>checked</code> / <code>selected</code></td><td>A radio, checkbox or option that starts chosen</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="demo" id="send-demo">
+          <span class="demo-tag">Try it</span>
+          <h3 style="margin:6px 0 4px">What actually gets sent?</h3>
+          <p class="muted">Fill in the form and press <strong>Send</strong>. Try leaving the required field empty, and typing an age below 16. Then look at which fields appear in the result, and which are missing.</p>
+          <form id="send-form">
+            <div class="row"><label for="demo-fullname">Full name (required)</label>
+              <input type="text" id="demo-fullname" name="fullname" required placeholder="e.g. Nimal Perera"></div>
+            <div class="row"><label for="demo-age">Age (16 to 60)</label>
+              <input type="number" id="demo-age" name="age" min="16" max="60"></div>
+            <div class="row"><label for="demo-code">Course code (<code>readonly</code>)</label>
+              <input type="text" id="demo-code" name="course" value="WDD-Y/618/7419" readonly></div>
+            <div class="row"><label for="demo-secret">Secret (<code>disabled</code>)</label>
+              <input type="text" id="demo-secret" name="secret" value="hidden-value" disabled></div>
+            <div class="row"><label for="demo-noname">Nickname (this input has <strong>no name</strong>)</label>
+              <input type="text" id="demo-noname" placeholder="not sent, no name"></div>
+            <div class="row"><label style="display:flex;gap:8px;align-items:center;font-weight:500;margin:0">
+              <input type="checkbox" name="newsletter" value="yes"> Send me the newsletter</label></div>
+            <button type="submit" class="btn btn-primary">Send</button>
+          </form>
+          <div class="demo-result" id="send-result" aria-live="polite">Nothing sent yet.</div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           ACTIVITY 4: A SMARTER FORM
+           ============================================================ -->
+      <section class="card" id="act-validation" data-toc="Activity 4: A smarter form" data-item="a_validation" data-type="activity">
+        <div class="section-label"><span class="type-tag type-activity">Activity 4</span><span class="type-hint">Do it yourself</span><span class="points-tag">+10 points</span></div>
+        <h2>Make the form smarter</h2>
+        <p>This sign-up form accepts anything. Add attributes so the browser checks the input before the form can be submitted.
+          Press <strong>Submit</strong> in the preview to test your checks.</p>
+        <div class="code-lab" data-activity="a_validation"></div>
+      </section>
+
+      <!-- ============================================================
+           QUIZ
+           ============================================================ -->
+      <section class="card" id="quiz-section" data-toc="Quiz" data-item="quiz" data-type="quiz">
+        <div class="section-label"><span class="type-tag type-quiz">Quiz</span><span class="type-hint">Test yourself</span><span class="points-tag">up to 50 points</span></div>
+        <h2>Check your understanding</h2>
+        <div id="quiz"></div>
+      </section>
+
+      <!-- ============================================================
+           SUMMARY (not tracked)
+           ============================================================ -->
+      <section class="card" id="summary" data-toc="Summary">
+        <h2>Summary</h2>
+        <ul>
+          <li>A form collects user input. The <code>&lt;form&gt;</code> element holds it, with <code>action</code> and <code>method</code> saying where and how it is sent.</li>
+          <li>The <code>&lt;input&gt;</code> element changes with its <code>type</code>: text, email, password, number, date, file, radio, checkbox, color, range, submit, reset.</li>
+          <li>A <code>&lt;label&gt;</code> is linked to an input by matching <code>for</code> and <code>id</code>.</li>
+          <li>Use <code>&lt;select&gt;</code> for drop-down lists, <code>&lt;textarea&gt;</code> for long text and <code>&lt;button&gt;</code> for actions.</li>
+          <li>Give every input a <code>name</code>. Use attributes like <code>required</code>, <code>min</code>, <code>max</code>, <code>maxlength</code> and <code>pattern</code> to check input.</li>
+        </ul>
+        <div class="callout callout-tip">
+          <strong>Before the next session</strong>
+          <p>Build your registration form in VS Code too, and save it as <code>registration.html</code>. Soon you will
+            make forms and pages look good with <strong>CSS</strong>.</p>
+        </div>
+        <p><a class="btn btn-primary" href="../../leaderboard.html">See the leaderboard</a>
+          <a class="btn btn-ghost" href="../../index.html">Back to all lectures</a></p>
+      </section>
+
+    </main>
+  </div>
+
+  <script type="module" src="session-02.js"></script>
+</body>
+</html>
