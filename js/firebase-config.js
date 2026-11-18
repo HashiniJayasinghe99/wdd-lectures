@@ -9,14 +9,10 @@
 // ---------------------------------------------------------------
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyB2Oib2H5ivnz5DOytRrx_kTZBETnE-yHU",
-  authDomain: "web-design-and-developme-95849.firebaseapp.com",
-  databaseURL: "https://web-design-and-developme-95849-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "web-design-and-developme-95849",
-  storageBucket: "web-design-and-developme-95849.firebasestorage.app",
-  messagingSenderId: "689848605743",
-  appId: "1:689848605743:web:4ea16b360f0e03248dbada",
-  measurementId: "G-1G9NCM9PLY"
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_PROJECT_ID.appspot.com",
+  messagingSenderId: "YOUR_SENDER_ID",
+  appId: "YOUR_APP_ID",
 };
-
-

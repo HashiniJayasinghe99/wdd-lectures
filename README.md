@@ -85,6 +85,18 @@ Only students who have a document can sign in. The website cannot create or dele
 Set in `js/config.js`: reading a section = 2, an activity = 10, each correct quiz answer = 5.
 Only a student's best quiz score counts.
 
+### How a lecture page is laid out
+
+Every `<section data-toc="...">` in a lecture HTML file is one **step**. Students see one step at a time and move with
+the **Previous / Next** buttons (or the arrow keys). The `data-type` of a section decides its colour and label:
+
+| `data-type` | Label | Colour | Counts for progress |
+|---|---|---|---|
+| `read` | Theory | blue | yes (after 5 seconds on the step) |
+| `activity` | Activity | green | yes (when the goals are met) |
+| `quiz` | Quiz | purple | yes |
+| *(none)* | no label | grey | no (overview, summary) |
+
 ## 5. Put it online
 
 Any static host works: **Firebase Hosting**, GitHub Pages or Netlify. Upload the whole folder.
