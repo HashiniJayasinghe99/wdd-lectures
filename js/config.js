@@ -83,6 +83,53 @@ export const LEARNING_OUTCOMES = [
           { id: "quiz",        title: "Session 01 quiz",                     type: "quiz", questions: 9 },
         ],
       },
+      {
+        id: "s02",
+        session: "Session 02",
+        title: "HTML Forms",
+        summary:
+          "Collect user input: the form element and its attributes, input types, labels, " +
+          "drop-down lists, text areas, buttons and input validation.",
+        page: "lectures/lo3/session-02.html",
+        items: [
+          { id: "r_forms",        title: "HTML forms and form attributes",   type: "read" },
+          { id: "r_elements",     title: "Form elements",                    type: "read" },
+          { id: "r_input",        title: "The input element",                type: "read" },
+          { id: "r_label",        title: "The label element",                type: "read" },
+          { id: "a_first_form",   title: "Activity 1: Your first form",      type: "activity" },
+          { id: "a_registration", title: "Activity 2: Registration form",    type: "activity" },
+          { id: "r_controls",     title: "select, textarea and button",      type: "read" },
+          { id: "a_upgrade",      title: "Activity 3: Upgrade the form",     type: "activity" },
+          { id: "r_attributes",   title: "Input attributes",                 type: "read" },
+          { id: "a_validation",   title: "Activity 4: A smarter form",       type: "activity" },
+          { id: "quiz",           title: "Session 02 quiz",                  type: "quiz", questions: 10 },
+        ],
+      },
+      {
+        id: "s04",
+        session: "Session 04",
+        title: "Styling with CSS",
+        summary:
+          "What CSS is, its syntax, the box model, relative and absolute positioning, " +
+          "the three ways to apply CSS, and selectors. Finish by restyling MyWebPage.html.",
+        page: "lectures/lo3/session-04.html",
+        items: [
+          { id: "r_what",       title: "What is CSS?",                       type: "read" },
+          { id: "r_syntax",     title: "CSS syntax",                         type: "read" },
+          { id: "a_syntax",     title: "Activity 1: Your first rules",       type: "activity" },
+          { id: "r_box",        title: "The box model",                      type: "read" },
+          { id: "a_box",        title: "Activity 2: Box model",              type: "activity" },
+          { id: "r_position",   title: "Positioning",                        type: "read" },
+          { id: "a_position",   title: "Activity 3: Positioning",            type: "activity" },
+          { id: "r_ways",       title: "Three ways to use CSS",              type: "read" },
+          { id: "a_ways",       title: "Activity 4: Three ways",             type: "activity" },
+          { id: "r_selectors",  title: "CSS selectors",                      type: "read" },
+          { id: "a_selectors",  title: "Activity 5: Selectors",              type: "activity" },
+          { id: "r_advanced",   title: "Going further and best practices",   type: "read" },
+          { id: "a_mypage",     title: "Activity 6: Restyle MyWebPage",      type: "activity" },
+          { id: "quiz",         title: "Session 04 quiz",                    type: "quiz", questions: 10 },
+        ],
+      },
     ],
   },
   {
